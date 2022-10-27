@@ -1,0 +1,40 @@
+O que é a internet?
+    Internet é a maior rede de computadores do mundo. Começou como um projeto academico em 1969 e se transformou em 
+    um projeto comercial global em 1990. Nos dias atuais, é utilizada por mais de 2 bilhões de pessoas no mundo.
+
+Onde está a internet?
+    Existem 3 partes básicas que compõe como a internet chega até nossas residências.
+    
+    • The last mile:
+        São os cabos de internet ou fibra óptica que chegam até o consumidor final. Em grande parte são 
+        providenciados por companhias de TV por assinatura ou operadoras telefônicas.
+
+    • Data Centers:
+        São salas cheias de servidores que armazenam dados de usuarios, aplicações e seus conteúdos. Alguns são
+        de propriedade de grandes empresas como Google ou Facebook, ja outros, são de proposito comercial e hospedam
+        diversos websites menores. Data Centers possuem uma conexão muito rápida com a internet e isso os permite se conectar
+        com diversos usuarios simultaneamente.
+
+    * The Backbone:
+        Consiste em redes de longa distancia, na maioria dos casos, compostas por fibra óptica. Essas redes transportam 
+        dados entre Data Centers e Usuários.
+
+Quem criou a Internet?
+    A internet começou como ARPANET e foi um projeto criado pela Military’s Advanced Research Projects Agency(ARPA), hoje chamada de DARPA,
+    é uma agencia criada pelo Departamento de Defesa dos Estados Unidos. O projeto era conduzido por Bob Taylor e começou a operar em 1969.
+    
+    Em 1973, os engenheiros de Software Vint Cerf e Bob Kahn começaram a trabalhar no proximo padrão de network da ARPANET. O padrão TCP/IP
+    se tornaria a base da internet moderna e a ARPANET passaria a usá-lo em 1983.
+
+    Durante os anos 80, os fundos da internet passsariam a ser providenciados pela National Science Foundation(NSF), a partir desse ponto,
+    a NSF começa a criar networks de longa distancia que serviram como a Backbone de 1981 a 1994. Em 1994, Clinton começa a privatizar a Backbone
+    e até hoje a internet chega até nós pela iniciativa privada.
+
+Quem está no comando da Internet?
+    Ninguem e todo mundo ao mesmo tempo. A internet é uma rede de redes que trocam informações entre si a todo momento: governos, companhias, universidades
+    e outras entidades operam suas próprias networks e trocam tráfego umas com as outras.
+
+    Existem companhias como a Internet Engineering Task Force(IETF), que é uma organização aberta, ou seja, qualquer pode propor reuniões, mudanças e propostas
+    para o atual funcionamento da internet, essas propostas são então julgadas com base em um consenso geral. Ninguém é obrigado a seguir o que é proposto na IETF mas,
+    geralmente, as propostas aceitas na IETF são adotadas. Também existe a Internet Corporation for Assigned Names and Numbers(ICANN), que é responsável pela distribuição
+    dos nomes de dominios no geral(google.com, facebook.com etc) e indereços de IP. A função da ICANN é distribuir domínios, porém não tem controle sobre quem os acessa.
