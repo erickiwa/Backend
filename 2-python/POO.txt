@@ -1,0 +1,336 @@
+1. Classes e Objetos
+    Quase tudo em Python é um objeto, com suas propriedades e métodos
+    Classes são como "construtores" de objetos, ou seja, um modelo para objetos
+
+    Exemplo:
+    class Pessoa:
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+2. Class methods
+    Class Methods são funções que, diferentemente dos object methods,
+    são aplicadas diretamente sobre a Classe. Class methods são uteis
+    para atribuir o mesmo valor para um dado padrão, porém, com outro
+    método de atribuição.
+
+    Exemplo:
+    class Pessoa:
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+            def get_ano_nascimnto(self):
+            print(self.ano_atual - self.idade)
+            return
+
+        @classmethod
+        def idade_por_ano(cls, nome, ano_nascimento):
+            idade = cls.ano_atual - ano_nascimento
+            return cls(nome, idade)
+
+3. Static method
+    Static methods são fuções que não tem relação direta com a
+    classe ou com objeto, porém, por convenção, precisam ser
+    criadas dentro do corpo da Classe
+
+    Exemplo:
+    class Pessoa:
+    def __init__(nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+    @staticmethod
+    def gera_id():
+        id = randint(0, 100)
+        print(id)
+        return
+
+4. Getters e Setters
+    Getters e Setters adicionam lógicas de validação a nossa classe
+
+    Exemplo:
+    class Produto:
+        def __init__(self, nome, preco):
+            self.nome = nome
+            self.preco = preco
+
+        def desconto(self, desconto):
+            self.preco = self.preco - (self.preco * (desconto / 100))
+
+        #Getter
+        @property
+        def preco(self):
+            return self._preco
+
+        #Setter
+        @preco.setter
+        def preco(self, valor):
+            if isinstance(valor, str):
+                valor = float(valor.replace('R$', ''))
+            self._preco = valor
+
+5. Encapsulamento
+    Encapsulamento é um padrão de design que visa restringir
+    o acesso a certos metodos e variaveis. Em python, temos
+    duas formas de "ocultar metodos" no nosso código.
+    _privado
+    __superprivado
+    Tudo que não tenha um ou dois underlines é considerado público.
+
+    Exemplo:
+    def Pessoa:
+        def __init__(nome, idade):
+        self._nome = nome
+        self.__nome = idade
+
+6. Associação
+    Associação é uilizada quando uma classe pode utilizar outra dentro de
+    si mesma, mas não necessariamenteuma precisa da outra para existir
+
+    Exemplo:
+    class Escritor:
+        def __init__(self, nome):
+            self._nome = nome
+            self._ferramenta = None
+
+        @property
+        def nome(self):
+            return self._nome
+
+        @property
+        def ferramenta(self):
+            return self._ferramenta
+
+        @ferramenta.setter
+        def ferramenta(self, ferramenta):
+            self._ferramenta = ferramenta
+
+    class Caneta:
+        def __init__(self, marca):
+            self._marca = marca
+
+        @property
+        def marca(self):
+            return self._marca
+
+    class MaquinaDeEscrever:
+        def __init__(self, mensagem):
+            self._mensagem = mensagem
+
+        def escrever(self):
+            print(self._mensagem)
+
+7. Agregação
+    Agregação é quando classes usam uma a outra como referência e
+    caso o container seja deletado, o conteudo continua existindo.
+
+    Exemplo:
+    class CarrinhoDeCompras:
+    def __init__(self):
+        self.produtos = []
+
+    def inserir_produto(self, produto):
+        self.produtos.append(produto)
+
+    def lista_produtos(self):
+        for produto in self.produtos:
+            print(f'{produto.nome} R${produto.valor}')
+
+    def soma_produtos(self):
+        valor = 0
+        for produto in self.produtos:
+            valor += produto.valor
+        print(f'Total: R${valor}')
+
+    class Produto:
+        def __init__(self, nome, valor):
+            self.nome = nome
+            self.valor = valor
+
+8. Composição
+    Composição ocorre quando um objeto recebe outro
+    dentro dele mesmo, ou seja, caso a classe container
+    seja deletada, os valores do objeto dentro dela vão ser perdidos
+
+    Exemplo:
+    class Cliente:
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+            self.enderecos = []
+
+        def insere_edereco(self, cidade, estado):
+            self.enderecos.append(Enderecos(cidade, estado))
+
+        def lista_cliente(self):
+            print(f'{self.nome}, {self.idade}')
+            for endereco in self.enderecos:
+                print(endereco.estado, endereco.cidade)
+
+    class Enderecos:
+        def __init__(self, cidade, estado):
+            self.cidade = cidade
+            self.estado = estado
+
+9. Herança Simples
+    A Herança simples ocorre quando uma classe recebe outra como parâmetro.
+    Com isso, mesmo que a classe que recebe tenha seus próprios parâmetros,
+    ela receberá todos da classe que foi recebida. Isso é útil quando diferentes
+    classes precisam receber valores ou funções genéricas
+
+    Exemplo:
+    class Generica:
+        def __init__(valor1, valor2):
+            self.valor1 = valor1
+            self.valor2 = valo2
+
+        def escreveAlgo(self, mensagem):
+            print(mensagem)
+
+    class Herdeira(Generica):
+        def retornaAlgo(self, mensagem):
+            return mensagem
+
+10. Sobreposição de membros
+    A sobreposição ocorre quando um metodo de uma classe
+    sobrepõe o método da classe que ela recebe, e então,
+    caso outra classe herde essa classe, elá irá herdar o
+    método sobreposto ao invés do original.
+
+    Exemplo:
+    class Generica:
+        def __init__(valor1, valor2):
+            self.valor1 = valor1
+            self.valor2 = valo2
+
+        def escreveAlgo(self, mensagem):
+            print(mensagem)
+
+    class Herdeira(Generica):
+        def escreveAlgo(self, mensagem):
+            return f'{mensagem}'
+
+    class Herdeira2(Herdeira):
+
+11. Herança Multipla
+    Herança multipla ocorre quando uma classe recebe varias classes
+    como parâmetro, essas classes podem ser outros parâmetros a receber ou
+    classes que carregam funções adicionais.
+
+    Exemplo:
+    class Beber:
+        def beber(self):
+            print('Glub Glub')
+
+    class Dormir:
+        def dormir(self):
+            print('A mimir...')
+
+    class Pessoa(Comer, Beber, Dormir):
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+12. Classes Abstratas
+    Classes abstratas são classes que contém métodos abstratos,
+    esses métodos, precisam ser redefinidos nas classes que as herdam.
+    Classes abstratas não são carregadas, ao invés disso, são como "moldes"
+    para as classes que vão as herdar.
+
+    Exemplo:
+    from abc import ABC, abstractmethod
+    class A(ABC):
+        def __init__(p1, p2):
+            self.p1 = p1
+            self.p2 = p2
+
+        def metodo(self):
+            pass
+
+    class B(A):
+        def metodo(self):
+        print("Reescrevendo o método")
+
+13. Polimorfistmo
+    Polimorfismo é o principio que permite que classes
+    derivadas de uma mesma superclasse tenham métodos iguais
+    mas comportamentos diferentes
+
+    Exemplo:
+    from abc import ABC, abstractmethod
+
+    class A:
+        def __init__(self, mensagem):
+            self._mensagem = mensagem
+
+        @abstractmethod
+        def escrever(self):
+            pass
+
+    class B(A):
+        def escrever(self):
+            print("Isso é uma mensagem")
+
+    class C(A):
+        def escrever(self):
+            print(self._mensagem)
+
+14. Métodos Mágicos
+    Magic methods ou dunder methods são métodos especiais que são chamados
+    entre underlines. Métodos mágicos não são pensados para serem invocados
+    diretamente, ao invés disso, são utilizados indiretamente dentro de classes.
+    Operadoes e muitas built-in functions chamam dunder methods ao serem executadas,
+    um exemplo disso é o operador + que usa o método __add_(target)
+
+    Exemplo:
+    x = 1
+    x = x.__add__(9)
+    print(x)
+
+    Exemplo2:
+    class funcionario:
+        def __init__(self):
+            self.name = 'Juan'
+            self.salary = 1000
+        def __str__(self):
+            return 'nome = '+self.name+', salario = R$'+str(self.salary)
+
+15. Context Manager
+    Python disponibiliza formas de abrir, editar e fechar arquivos/conexões
+    de forma simplificada utilizando context manager. Isso diminui o uso de diversos
+    métodos na hora de mecher em algum arquivo ou conexão.
+
+    Exemplo:
+    class Arquivo:
+        def __init__(self, arquivo, modo):
+            print('Abrindo arquivo')
+            self.arquivo = open(arquivo, modo)
+
+        def __enter__(self):
+            print('retornando arquivo')
+            return self.arquivo
+
+        def __exit__(self, exc_type, exc_val, exc_tb):
+            print('fechando arquivo')
+            self.arquivo.close()
+            return True
+
+    with Arquivo('abc.txt', 'w') as arquivo:
+        arquivo.write('jooj')
+
+    Exemplo2:
+    from contextlib import contextmanager
+    @contextmanager
+    def abrir(arquivo, modo):
+        try:
+            print('abrindo arquivo')
+            arquivo = open(arquivo, modo)
+            yield arquivo
+        finally:
+            print('fechando arquivo')
+            arquivo.close()
+
+
+    with abrir('abc.txt', 'w') as arquivo:
+        arquivo.write('jeej')

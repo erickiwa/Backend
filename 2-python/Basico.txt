@@ -1,0 +1,360 @@
+Python é uma linguagem High-level e de propósito geral.
+É fortemente-tipada e seu código fucionade acordo com identação
+suporta diversos paradigmas de programação, incluindo:
+programaçação estruturada, funcional e orientada a objetos.
+
+1. Comentários:
+    Comentários podem ser escritos de duas formas:
+
+    # comentário 1
+
+    """
+    comentário 2
+    """
+
+2. Outputs e inputs
+    print é ocomando de output em Python
+
+    print("Hello world")
+    print(variavel1, "também pode ser concatenada", variavel2)
+    print(f'{variavel} fprint pode exibir variaveis ou dados')
+
+
+    input armezena um dado digitado pelo usuario
+    variavel_1 = input("Digite seu nome: ")
+    variavel_2 = input("Digite um numero: ")
+    variavel_3 = int(variavel_2) #função int() converte o input em um inteiro
+
+3. Tipos de dados
+    Existem 4 tipos de dados em Python: strings, ints, floats e bools
+
+    string: strings são um dado do tipo texto e ficam entre aspas: "Ola"'Mundo' "18"
+    int: Ints são um dado numérico e inteiro: 1, 2, 3, -1, -2, -3
+    float: float é um dado numério com ponto flutuante: 1.0 2.3, 3.999, -1.25
+    bool: bool são um dado utilizado em condições: variavel1 = True variavel2 = False
+
+4. Operadores aritméricos
+    Operadores podem ser usados para matemática ou concatenações,
+    a ordem das operações é feita na mesma ordem da matemática
+
+    + adição
+    - subtração
+    * multiplicação
+    / divisão
+    // divisão arredondada
+    % resto dadivisão
+    ** potênia
+    () ordem das operações
+
+        var_1 = 1 + 2 | var_2 = 1 - 2 | var_3 = 1 * 2 | var_4 = 1 / 2    
+    var_5 = 1 // 2 | var_6 = 1 % 2 | var_7 = 1 ** 2 | var_8 = 1 * (1 + 2)
+
+5. Variáveis
+    Variáveis são palavras que armazenam dados seguindo os tipos de dados
+
+    nome = "Lucas"
+    idade = 30
+    peso = 80
+    altura = 1.80
+    e_maior = idade > 18
+    imc = peso // (altura**2)
+    print(f'O imc de Lucas é de: {imc:.2f}') #:.2f exibe apenas 2 casas decimais
+
+6. Data collections
+    Lists,Tuples, Sets e Arrays são muito similates, os 4 tipos
+    são usados para armazenar diversos dados em uma mesma variável
+
+    Listas:
+    Listas são ordenadas, editaveis e podem conter items duplicados
+
+    lista_1 = ["elfss", 21, "male", "Cyberseurity Researcher"]
+    lista_2 = [1, 2, 3, 1, 2, 3]
+    lista_3 = [1.5, 2.00, 3, 5, "lista"]
+    lista_4 = [[a,b], [b,c], [a,b]]
+
+    Tuples:
+    Tuples são ordenadas, NÂO editaveis e podem conter idem duplicados
+
+    tuple_1 = ("Elfss", "Monseur")
+
+    Sets:
+    Sets são NÃO ordenados NÃO editáveis e NÃO podem conter item duplicados
+
+    set_1 = {1, 2, 3}
+    set_2 = {"Elfss", "Monseur", "Felfs"}
+
+    Dicionarios:
+    Dicionarios são usados para guardar pares de chave:valor
+
+    dicionario_1 = {
+        "marca": "Nissan",
+        "modelo": "Sentra",
+        "ano": 2015
+    }
+
+7. Condicionais e estruturas de repetição:
+    Operadores condicionais executam uma ação se uma determinada 
+    condição for cumprida ou executada.
+
+    | == | igual a
+    | >  | maior que
+    |  < | menor que
+    | >= | maior ou igual a
+    | <= | menor ou igual a
+    | != | diferente de
+
+    | and | executa apenas se todos parametros forem verdadeiros
+    | or  | executa se um dos parameros forem verdadeiros
+    | not | executa se o contrário a condição
+    | in  | executa se um parametro for verdadeiro dentro de um dado
+    | not in | executa se um parametro não exisir dentro de um dado
+
+    Condicional if, elif e else:
+    if executa se o parametro for verdadeiro
+    elif irá executar se o if não for verdadeiro
+    else executa se nenhuma das outras condições for verdadeira
+
+    | break   | para e sai do laço
+    | continue| reinicia o laço a partir desse ponto
+
+    Estrutura de repetição While:
+    Executao laço enquanto a condição for verdadeira
+    if e for também podém ser usados dentro dessa condição
+    else pode ser utilizado para executar algo ao final do loop
+
+    estrutura de repetição For:
+    Executa o laço para cada valor valor em algo.
+    if pode ser usado dentro do for
+    else também pode ser utilizado ao final do loop
+
+    Exemplos:
+
+    var_1 = 1
+    var_2 = 10
+    var_3 = range(3, 6)
+
+    if var_1 == var_2:
+        print("Os números são iguais)
+    elif var_1 > var_2:
+        print(f'{var_1} é maior que {var_2}')
+    else: 
+        print(f'{var_1} é menor que {var_2}')
+    #Como nenhum dos ifs é verdadeiro, else seria executado
+
+
+    while var_1 < var_2:
+        print(var_1)
+        var += 1
+    #O código irá exibir e incrementar o valor do contador até que ele seja igual a 10
+
+
+    for n in var_3:
+        print(n)
+    #O código irá exibir os números 3, 4 e 5
+    #a função range() cria números entre um ponto e outro
+
+8. Funções
+    Funções são códigos que podem ser armazenados e eventualmente utilizados
+    em outra parte do nosso código, funções devem retornar um valor
+
+    *args & **kwargs
+    args são argumentos que recebem valores pré-definidos
+    já kwargs recebem tanto a palavra chave quanto o valor
+
+    Exemplos:
+    def EscreveMensagem(mensagem):
+        return mensagem
+
+9. Lambda
+    Lambda são funções pequenas e anônimas
+
+    Exemplos:
+    x = lambda a : a + 10
+        print(x(20))
+
+10. List comprehension é uma forma simples de utilizar valores
+    de uma lista em outra lista
+
+    exemplos:
+    *Com list comprehension
+        fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+        newlist = [x for x in fruits if "a" in x]
+
+    *Sem list comprehension
+        fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+        newlist = []
+        for x in fruits:
+            if "a" in x:
+            newlist.append(x)
+
+11. try, except e raise
+    try irá executar um bloco de código, caso ele encontre um erro irá executar
+    o except, pode-se definir exceções difecerentes para erros diferentes.
+    caso não haja falhas, else pode ser usado e finally irá executar independente
+    de quaisquer ações que foram executadas nos blocos acima
+    raise pode lançar exceções em condicionais(if, else etc)
+
+    try:
+        print(a)
+    except NameError:
+        print("A variável a não foi executada")
+    except:
+        print("Algo deu errado")
+    else:
+        a = "deu tudo certo!"
+    finally:
+        print(" ainda precisa de ajuda?")
+
+12. Geradores, Iteradores e Iteraveis
+    Iteradores são objetos que podem iterados, isso significa
+    que se pode viajar entre os valores do objeto.
+    Geradores são funções que carregam iteradores e iteraveis,
+    ou seja, funções que percorrem um array ao invés de carregá-lo
+
+
+    *iteraveis
+    tupla = ("banana", "maca", "laranja", "morango", "tomate")
+
+    *iteradores
+    tupla = iter(tupla)
+
+    print(type(tupla))
+    print(next(tupla), next(tupla))
+
+    *geradores
+    def gerador():
+        for n in range(100):
+            yield n
+            time.sleep(0.1)
+
+    g = gerador()
+
+    for v in g:
+        print(v)
+
+13. Modulos e Pacotes
+    Modulos são funções que são chamadas a partir de outros arquivos.py
+    Pacotes são diversos modulos agrupados em uma unica pasta
+    Quando chamamos uma função de outro arquivo estamos criando um modulo,
+    esses que, são utilizados principalmente para reaproveitameno de codigo
+    pacotes geralmente são baixados com gerenciadores como pip e podem
+    oferecer uma gama de novas funções para o código
+
+    from meu_modulo import minha_funcao
+    import itertools
+
+14. manipulação de documentos
+    Python tem diversas funções para criar, ler, modificar ou deletar
+    arquivos, a função chave para lidar com arquivos é a file()
+    "r" read é o valor padrão, abre o arquivio em modo leitura
+    "a" append adiciona valores a um arquivo
+    "w" reescreve um arquivo, cria um se não existir
+    "x" Cria o arquivo
+
+    "t" Text é um valor default
+    "b" Modo binário
+
+
+    *lê o documento
+    f = open("doc.txt", "r")
+    print(f.read())
+    f.close()
+
+
+    *Lê até o 4 valor do documento
+    f = open("doc.txt", "r")
+    print(f.read(4))
+    f.close()
+
+
+    *Lê apenas uma linha
+    f = open("doc.txt", "r")
+    print(f.readline())
+    f.close()
+
+
+    *Adicionando um novo valor
+    f = open("doc.txt", "a")
+    f.write("\nValor novo")
+    f.close()
+
+
+    *sobrescrevendo o documento
+    f = open("doc.txt", "w")
+    f.write("Reescrevendo tudo")
+
+
+    *Cria um arquivo, se não, retorna um erro
+    f = open("novo_arqiuvo.txt", "x")
+    #Cria um arquivo se não existir nenhum como mesmo nome
+    f = open("novo_arqiuvo.txt", "w")
+
+
+    *Deletando arquivos
+    import os
+
+    if os.path.exists("demofile.txt"):
+      os.remove("demofile.txt")
+    else:
+      print("O arquivo não existe")
+
+
+    *Remove diretórios
+    os.rmdir("myfolder")
+
+15. Built in Functions
+    Built in functions são funções nativas do Python e muitas oferecem
+    formas mais praticas de se chegar a um resultado, diminuindo a
+    necessidade de escrever mais codigo que o necessário
+
+    1.  map
+        a função map() irá executar uma determinada função
+        para cada item dentro de um iteravel
+
+        Exemplos:
+        def medefrutas(fruta):
+            return len(fruta)
+
+        frutas = ['Banana', 'Maça', 'laranja']
+        tamanho_frutas = map(medefrutas, frutas)
+        print(list(tamanho_frutas))
+
+    2.  filter
+        a função filter() retorna um novo iteravel sob uma condição definida na
+        propria função(Ex: retorne os items que tem um preço superior a 1)
+
+        lista = ["Banana", "laranja", "kiwi", "maracuja", "coco"]
+
+        nova_lista = filter(lambda f: "a" in f, lista)
+
+        for frutas in nova_lista:
+            print(frutas)
+
+    3.  zip
+        zip() vai unir iteraveis em um unico iteravel
+
+        Exemplos:
+        cidades = ["São Paulo", "Rio de Janeiro", "Minas gerais", "Belém", "Ceará"]
+        estados = ["SP", "RJ", "MG", "PR"]
+        indice = count()
+
+        cidades_estados = zip(
+            indice,
+            estados,
+            cidades
+        )
+
+        print(list(cidades_estados))
+
+16. Decorators
+    Decorators nos permitem empacotar uma função dentro de uma variavel
+    e reutiliza-la como uma função
+
+    def dizOla(text):
+        return text.upper()
+
+    print(dizOla('ola'))
+
+    outro_oi = dizOla
+
+    print(outro_oi('oie'))

@@ -1,0 +1,383 @@
+Itertools
+    zip_longest
+        une ireraveis e pode usar fillvalue para
+        valores que não se podem preencher
+    count
+        cria contadores, pode-se definir o inicio
+        e a quantidade de pulos de um numero a outro
+    Combinations, permutations e product
+        combinations - a ordem não importa
+        permutations- ordem importa
+        combinations e permutations não permitem valores repetidos
+        product - ordem importa e repete valores unicos
+    groupby
+        cria agrupamentos baseados em chaves
+
+dataclasses
+    O modulo dataclasses automaticamnte introduz métodos especiais a classe.
+
+    @dataclasses
+     inicia uma nova classe que ja com o __init__ passado e automaticamente
+     passa o self. para os atributos de classe
+
+Enum
+    Enumerations são criadas para definir novos tipos de dados como:dias da semana, itens de um jogo,
+    planetas e etc. Enum em python facilita esse processo nos permitindo criar classes que armazenam
+    esses novos valores. Enum recebe name e value.
+
+datetime
+    datetime é um módulo utilizado para lidar com horários e datas. o módulo locale
+    também é utilizado para lidar com diferenças culturais(pontos e virulas por exemplo)
+
+    from datetime import datetime, timedelta
+    from locale import setlocale, LC_ALL
+
+    setlocale(LC_ALL, 'pt_BR.utf-8')
+
+    #Uso commum
+    data = datetime(2022, 2, 4, 23, 59, 30)
+    print(data.strftime('%d/%m/%Y %H:%M:%S'))
+
+    #Timestamp converte a data para um numero flutuante
+    data2 = data.timestamp()
+    print(data2)
+    print(datetime.fromtimestamp(data2))
+
+    #Timedelta nos permite adicionar valores a nossa data
+    data3 = data + timedelta(days=5, seconds=40, hours=1, minutes=11)
+    print(data3)
+
+    #Usa a data atual do computador
+    data4 = datetime.now()
+    print(data4.strftime('%A, %d de %m de %Y'))
+
+
+os
+    os é utilizado para gerenciar arquivos, pastas e caminhos numa aplicação
+
+    Exemplo:
+    #O código irá levar os arquivos de um diretório até o outro
+    import os
+    import shutil
+
+    caminho_original = input('Que arquivo/s deseja mover? ')
+    caminho_novo = input('Para onde vamos mover o arquivo/s? ')
+
+    try:
+        os.mkdir(caminho_novo)
+    except FileExistsError as e:
+        print(f'Pasta {caminho_novo} ja existe')
+
+    for root, dirs, files in os.walk(caminho_original):
+        for file in files:
+            old_file_path = os.path.join(root, file)
+            new_file_path = os.path.join(caminho_novo, file)
+            
+            shutil.move(old_file_path,new_file_path)
+            print(f'Arquivo {file} movido com sucesso!')
+
+json
+    json é um módulo usado para ler, criar, converter ou modificar arquivos json
+    dump é usado para escrever um arquivo JSON.
+    dumps é usado para converter objetos Python em strings JSON.
+    load e loads sã o exato contrário disso.
+
+    dump/dumps ->
+            <-    load/loads
+    Python           JSON
+    dict             object
+    list/tuple       array
+    str              string
+    int/float        number
+    True             true
+    False            false
+    None             Null
+
+    Exemplo:
+    #O código irá transformar o dicionário em um arquivo JSON
+    import json
+
+    dict = {
+        "1":{
+            "nome": "Gustavo",
+            "idade": "18",
+            "profissao": "vendedor"
+        },
+        "2":{
+            "nome": "Jarbas",
+            "idade": "33",
+            "profissao": "pai"
+        },
+        "3":{
+            "nome": "baguncinha",
+            "idade": "40",
+            "profissao": "policial"
+        }
+    }
+
+    with open('funcionarios.json', 'w') as arquivo:
+        json.dump(dict, arquivo, indent=4)
+
+csv
+    comma separated values é um tipo de dado que é muito usado em tabelas
+    exel, google sheets, clientes de emails, banco de dadose etc
+
+    Exemplo:
+    #Lendo um arquivo CSV
+    import csv
+
+    with open('dados.csv', 'r') as arquivo:
+        dados = csv.reader(arquivo)
+
+    for dado in dados:
+        print(dado)
+
+random
+    random é um modulo para se trabalhar com valores aleatorios
+
+    Exemplos:
+    import random
+
+    #Criando um número aleatório
+    numero = random.randint(0, 100)
+
+    #Embaralhando valores
+    lista = ["Jarbas", "Jemerson", "Jamias", "Barbara", "Beatrice", "Carlos", "Cristo", "Diogo"]
+    random.shuffle(lista)
+
+    #Sorteando um valor
+    lista2 = [1,2,3,4,5]
+    sorteio = random.choice(lista2)
+
+    import string
+    letras = string.ascii_letters
+    digitos = string.digits
+    caracteres = '!@#$*_-&'
+    geral = letras + digitos + caracteres
+    senha = "".join(random.choices(geral, k=20))
+    print(senha)
+
+string
+    É um módulo utilizado para formatar e gerar caracteres
+
+    Exemplo:
+    from string import Template
+    from datetime import datetime
+
+    with open('template.html', 'r') as html:
+        template = Template(html.read())
+        data_atual = datetime.now().strftime('%d/%m/%Y')
+        corpo_msg = template.substitute(nome='Elfss', date=data_atual)
+
+    print(corpo_msg)
+
+zipfile
+    zipfile pode compactar e descompactar arquivos
+
+    Exemplo:
+    from zipfile import ZipFile
+    import os
+
+    caminho = '/home/elfss/Documents/projetos/PythonPentestScripts/'
+    with ZipFile('arquivo.zip', 'w') as zip:
+        for arquivo in os.listdir(caminho):
+            caminho_completo = os.path.join(caminho, arquivo)
+            zip.write(caminho_completo, arquivo)
+
+    with ZipFile('arquivo.zip', 'r') as zip:
+        for arquivo in zip.namelist():
+            print(arquivo)
+
+            
+sys
+sys é um modulo utilizado para passar argumentos para scripts
+
+    Exemplo:
+    #O código dá 2 parametros para um script que lista arquivos ou diretorios
+    import os
+    import sys
+
+    argumentos = sys.argv
+    qtd_argumentos = len(argumentos)
+
+    if qtd_argumentos <= 1:
+        print("Faltando argumentos!")
+        print('-a ', 'Para listar todos os arquivos', sep='\t')
+        print('-d ', 'Para listar todos os diretorios', sep='\t')
+        sys.exit
+
+    so_arquivos = False
+    if '-a' in argumentos:
+        so_arquivos = True
+
+    so_diretorios = False
+    if '-d' in argumentos:
+        so_diretorios = True
+
+    for arquivo in os.listdir('.'):
+        if so_arquivos:
+            if os.path.isfile(arquivo):
+                print(arquivo)
+        if so_diretorios:
+            if os.path.isdir(arquivo):
+                print(arquivo)
+
+web scraping
+    Web Scraping é uma forma de puxar dadosde uma página web para dentro
+    do nosso código e manipulá-los da forma que desejarmos.
+    Para fazer isso, usamos o módulo requests e o modulo BeauifulSoup
+
+    Exemplo:
+    #O código puxa as perguntas do site stackoverflow
+    import requests
+    from bs4 import BeautifulSoup
+
+    url = 'https://stackoverflow.com/questions/tagged/python'
+    response = requests.get(url)
+    html = BeautifulSoup(response.text, 'html.parser')
+
+    for pergunta in html.select(".s-post-summary"):
+        titulo = pergunta.select_one('.s-post-summary--content-title')
+        data = pergunta.select_one('.s-user-card--time')
+        votes = pergunta.select_one('.s-post-summary--stats-item-number')
+        print(data.text, f'{votes.text} votes', titulo.text, sep='\t')
+
+subprocess
+    subprocess é um modulo utilizado para rodar comandos no terminal
+    a partir de linhas de código. É útil para rodar comandos e os capturar
+    ou automatizar comandos rotineiros(que pode ser utilizado num crom)
+
+    Exemplo:
+    #O código usa o comando ping 4 vezes
+    import subprocess
+
+    proc = subprocess.run(
+        ['ping', '127.0.0.1', '-c', '4'],
+        capture_output=True,
+        text=True
+    )
+
+    saida = proc.stdout
+    print(saida)
+
+threading
+    threading é um módulo útil para gerenciar threads e permite
+    a execução do código em multi tarefas com processos paralelos
+
+    Exemplo:
+    #A Mensage mserá exibida após o tempo determinado
+    from threading import Thread
+    from time import sleep
+
+    def vai_demorar(texto, tempo):
+        sleep(tempo)
+        print(texto)
+
+    t1 = Thread(target=vai_demorar, args=('Olá Imundo', 10))
+    t1.start()
+    t1.join()
+
+    print('Fim')
+
+collections
+    collection é um módulo para se lidar com estruturas de dados
+    complexas. deque por exemplo, pode implementar FIFO em data collections 
+    
+    Exemplo:
+    #Vai criar uma contagem que mostra 10 numeros e remove sempre o primeiro indice e adiciona o ultimo
+    from collections import deque
+    from time import sleep
+
+    fila = deque(maxlen=10)
+
+    for i in range(100):
+        fila.append(i)
+        sleep(1)
+        print(fila)
+
+Jupyter Notebook
+    Jupyter botebook é uma aplicação web que permite a execução
+    de código em tempo real, visualização de dados e textos explicativos.
+    Cientistas conseguem criar, executar e explicar o processo enquanto
+    executam o código para mostrar dados
+
+openpyxl
+   Openpyxl é um modulo utilizado para criar e  manipular planilhas como google sheets e exel
+
+    Exemplo:
+    #Criando uma planilha com valores aleatorios
+    import openpyxl
+    from random import uniform
+
+    planilha = openpyxl.Workbook()
+    planilha.create_sheet('Planilha1', 0)
+    planilha.create_sheet('Planilha2', 1)
+
+    planilha1 = planilha['Planilha1']
+    planilha2 = planilha['Planilha2']
+
+    for linha in range(1, 11):
+        numero_pedido = linha - 1
+        planilha1.cell(linha, 1).value = numero_pedido
+        planilha1.cell(linha, 2).value = 1200 + linha
+
+        preco = round(uniform(10, 100), 2)
+        planilha1.cell(linha, 3).value = preco
+
+    for linha in range(1, 11):
+        planilha2.cell(linha, 1).value = f'Luiz {linha} {round(uniform(10, 100), 2)}'
+        planilha2.cell(linha, 2).value = f'Otávio {linha} {round(uniform(10, 100), 2)}'
+        planilha2.cell(linha, 3).value = f'Joãozinho {linha} {round(uniform(10, 100), 2)}'
+
+    planilha.save('nova_planilha.xlsx')
+
+
+selenium
+    selenium é um modulo que visa automatizar tarefas no navegador
+
+    from selenium import webdriver
+    from selenium.webdriver.common.keys import Keys
+    from selenium.webdriver.common.by import By
+    from time import sleep
+
+    class ChromeAuto:
+    def __init__(self, link):
+        self.valor = []
+        
+        self.driver_path = 'chromedriver'
+        self.options = webdriver.ChromeOptions()
+        self.options.add_argument('user-data-dir=Perfil')
+        self.chrome = webdriver.Chrome(
+            self.driver_path,
+            options=self.options
+        )
+        self.chrome.get(link)
+
+    def acessa(self):
+        moeda = self.chrome.find_element(By.XPATH, '//*[@id="main"]/div/div[3]/div[2]/table/tbody/tr[2]/td[1]').text
+        self.valor.append(moeda)
+        usd_hoje = self.chrome.find_element(By.XPATH, '//*[@id="main"]/div/div[3]/div[2]/table/tbody/tr[2]/td[2]').text
+        self.valor.append(usd_hoje)
+        usd_1mes = self.chrome.find_element(By.XPATH, '//*[@id="main"]/div/div[3]/div[2]/table/tbody/tr[2]/td[3]').text
+        self.valor.append(usd_1mes)
+        usd_1ano = self.chrome.find_element(By.XPATH, '//*[@id="main"]/div/div[3]/div[2]/table/tbody/tr[2]/td[4]').text
+        self.valor.append(usd_1ano)
+        
+        print(f'Moeda: {self.valor[0]} | Hoje: {self.valor[1]} | 1 Mes: {self.valor[2]} | 1 Ano: {self.valor[3]}')
+
+    def fechar(self):
+        self.chrome.quit()
+
+
+    if __name__ == '__main__':
+    busd = ChromeAuto('https://www.coinbase.com/pt/converter/bnb/usd')
+    busd.acessa()
+    busd.fechar()
+
+    btc = ChromeAuto('https://www.coinbase.com/pt/converter/btc/usd')
+    btc.acessa()
+    btc.fechar()
+
+    eth = ChromeAuto('https://www.coinbase.com/pt/converter/eth/usd')
+    eth.acessa()
+    eth.fechar()
